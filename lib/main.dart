@@ -16,77 +16,84 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: "Calculadora de IMC",
       theme: ThemeData.dark(),
-      home: CalculadoraIMC(),
+      home: MyHomePage() 
     );
   }
 
 }
 
-class CalculadoraIMC extends StatefulWidget {
-  @override
-  _CalculadoraIMCSTATE createState() => _CalculadoraIMCSTATE();
-}
-
-class _CalculadoraIMCSTATE extends State<CalculadoraIMC> {
-  String resultado = "";
-  TextEditingController weigthController = TextEditingController();
-  TextEditingController heightController = TextEditingController();
-
+class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Calculadora de IMC"),
+        title: Text('Flutter Demo'),
       ),
       body: Padding(
         padding: EdgeInsets.all(16.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Title(color: Colors.pink, child: Text("Tu IMC es de: "+ resultado.toString())),
-            SizedBox(height: 100),
-            TextField(
-              controller: weigthController,
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                  hintText: 'Introduce el peso en KG'
+            Container(
+              margin: EdgeInsets.all(10.0),
+              padding: EdgeInsets.all(20.0),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.blue),
+              ),
+              child: Text(
+                'Este es un contenedor',
+                style: TextStyle(fontSize: 20.0),
               ),
             ),
-            SizedBox(height: 30),
+            Image.network('https://picsum.photos/250?image=9', width: 200, height: 200,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                TextButton(
+                    style: ButtonStyle(
+                    foregroundColor: MaterialStateProperty.all<Color>(const Color.fromARGB(255, 205, 33, 243)),
+                    ),
+                      onPressed: () { },
+                      child: Text('TextButton'),
+                  ),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.red, // background
+                      foregroundColor: Colors.white, // foreground
+                    ),
+                    onPressed: () { },
+                    child: Text('ElevatedButton'),
+                  )
+              ],
+            ),
             TextField(
-              controller: heightController,
-              keyboardType: TextInputType.number,
               decoration: InputDecoration(
-                  hintText: 'Introduce el altura en metros'
+                hintText: 'Ingrese su texto aquí',
+                labelText: 'Texto',
+                border: OutlineInputBorder(),
               ),
             ),
-            SizedBox(height: 80),
-            ElevatedButton(onPressed: () {calculaImc(double.tryParse(heightController.text) ?? 0, double.tryParse(weigthController.text) ?? 0 );}, child: Text('Calcular'))
+            Expanded(
+              child: ListView(
+                children: [
+                  ListTile(
+                    title: Text('Elemento 1'),
+                  ),
+                  ListTile(
+                    title: Text('Elemento 2'),
+                  ),
+                  ListTile(
+                    title: Text('Elemento 3'),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
     );
   }
-
-  void calculaImc(double altura, double peso) {
-    //double? altura = double.tryParse(heightController.text) ?? 0;
-    //double? peso = double.tryParse(weigthController.text) ?? 0;
-    String res = "";
-    res = (peso / pow(altura, 2)).toStringAsFixed(1);
-    setState(() {
-      resultado = res;
-    });
-
-  }
 }
-
-
-
-
-
-
-
-
 
 
 
