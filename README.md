@@ -1,7 +1,5 @@
-# proyectos [ Calcuadora de IMC ] 
+## proyectos [ Lista de contactos ] 
+![lista_contactos](https://github.com/JEstebanSanti/app_multiplataforma/assets/78988823/915a2dca-20fe-411c-b800-41a11a7504e1)
 
-![imc_cal](https://github.com/JEstebanSanti/app_multiplataforma/assets/78988823/47227268-b3b8-485b-9a96-8ce2bec49a4f)
+### Desarrollada en el IDE de Android Studio con el framework Flutter y lenguaje Dart
 
-## Desarrollada en el IDE de Android Studio con el framework Flutter y lenguaje Dart
-
-> calcula tu indice de masa corporal usando tu peso y estatura
